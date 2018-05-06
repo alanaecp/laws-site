@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <head>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
   <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-  <link type="text/css" rel="stylesheet" href="css/main.css" />
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css') }}" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
 
+  <meta charset="utf-8">
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LAWS</title>
@@ -76,21 +77,24 @@
       </div> -->
       <div class="row">
         <p class="flow-text white-text">Quer ficar por dentro das novidades?</p>
-        <div class="col s12 m4">
-          <div class="input-field">
-            <input class="input-newsletter  white grey-text" placeholder="Informar Nome" type="text" id="nome-input">
+        <form action="/subscribers/" method="post">
+          <div class="col s12 m4">
+            <div class="input-field">
+              <input class="input-newsletter  white grey-text" placeholder="Informar Nome" type="text" id="nome-input" name="name">
+            </div>
           </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="input-field">
-            <input class="input-newsletter white grey-text" placeholder="Informar Email"  type="text" id="email-input">
+          <div class="col s12 m4">
+            <div class="input-field">
+              <input class="input-newsletter white grey-text" placeholder="Informar Email"  type="text" id="email-input" name="email">
+            </div>
           </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="input-field">
-            <button class="btn red darken-3 btn-newsletter">Inscreva-se</button>
+          <div class="col s12 m4">
+            <div class="input-field">
+              <input type="submit" value="Inscreva-se" class="btn red darken-3 btn-newsletter">
+
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
 
@@ -166,21 +170,23 @@
         </div>
         <div class="col s12 m6">
           <div class="card-panel grey lighten-3">
-            <h5>Preencha o formulário abaixo:</h5>
-            <div class="input-field">
-              <input type="email" placeholder="Email" id="email">
-              <label for="email">Email</label>
-            </div>
-            <div class="input-field">
-              <input type="text" placeholder="Phone" id="phone">
-              <label for="phone">Phone</label>
-            </div>
-            <div class="input-field">
-              <textarea class="materialize-textarea" placeholder="Enter Message" id="message"></textarea>
-              <label for="message">Message</label>
-            </div>
-            <input type="submit" value="Enviar" class="btn red darken-4">
+            <form action="/messages/" method="post">
+              <h5>Preencha o formulário abaixo:</h5>
+              <div class="input-field">
+                <input type="email" placeholder="Email" id="email" name="email">
+                <label for="email">Email</label>
+              </div>
+              <div class="input-field">
+                <input type="text" placeholder="Phone" id="phone" name="phone">
+                <label for="phone">Phone</label>
+              </div>
+              <div class="input-field">
+                <textarea class="materialize-textarea" placeholder="Enter Message" id="message" name="message"></textarea>
+                <label for="message">Message</label>
+              </div>
+              <input type="submit" value="Enviar" class="btn red darken-4">
 
+            </form>
           </div>
         </div>
       </div>
@@ -197,7 +203,7 @@
   <!--Header -->
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
   <script>
     $(document).ready(function () {
       // Custom JS & jQuery here
